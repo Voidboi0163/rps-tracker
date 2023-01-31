@@ -1,30 +1,66 @@
+input.onButtonPressed(Button.A, function () {
+    basic.showLeds(`
+        . . # . .
+        . # . # .
+        . # # # .
+        . # . # .
+        . # . # .
+        `)
+    pas += 1
+    r += 1
+    update()
+})
+input.onButtonPressed(Button.AB, function () {
+    basic.showLeds(`
+        . # # # .
+        . . # . .
+        . . # . .
+        . . # . .
+        . . # . .
+        `)
+    t += 1
+    r += 1
+    update()
+})
+input.onButtonPressed(Button.B, function () {
+    basic.showLeds(`
+        . # # . .
+        . # . # .
+        . # # . .
+        . # . # .
+        . # # . .
+        `)
+    pbs += 1
+    r += 1
+    update()
+})
 input.onGesture(Gesture.Shake, function () {
     reset()
 })
 function update () {
     OLED.clear()
-    OLED.writeStringNewLine("Player A score: " + pas2)
+    OLED.writeStringNewLine("Player A score: " + pas)
     OLED.newLine()
-    OLED.writeStringNewLine("Player B score: " + pbs2)
+    OLED.writeStringNewLine("Player B score: " + pbs)
     OLED.newLine()
-    OLED.writeStringNewLine("Ties: " + u)
+    OLED.writeStringNewLine("Ties: " + t)
     OLED.newLine()
-    OLED.writeStringNewLine("Rounds:  " + s)
+    OLED.writeStringNewLine("Rounds:  " + r)
 }
 function reset () {
     OLED.init(128, 64)
-    pas2 = 0
-    pbs2 = 0
-    u = 0
-    s = 0
+    pas = 0
+    pbs = 0
+    r = 0
+    t = 0
     OLED.writeStringNewLine("wanna play a game?")
     basic.pause(2000)
     update()
 }
-let s = 0
-let u = 0
-let pbs2 = 0
-let pas2 = 0
+let pbs = 0
+let t = 0
+let r = 0
+let pas = 0
 reset()
 basic.forever(function () {
 	
